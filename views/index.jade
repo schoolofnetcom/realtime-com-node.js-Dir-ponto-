@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div(data-ng-controller="PostController as vm")
+        div.panel.panel-default
+            {{vm}}
+            div.panel-heading
+                h4  Create a new Post
+            div.panel-body
+                form
+                    div.form-group
+                        input.form-control(placeholder="Enter your title here", data-ng-model="post.title")
+                    div.form-group
+                        textarea.form-control(placeholder="Enter your text here", data-ng-model="post.text")
+            div.panel-footer
+                button.btn.btn-primary.btn-sm(type="submit", data-ng-click="vm.create(post)") Post
+                button.btn.btn-warning.btn-sm(type="reset") Reset
+
+
+        div.panel.panel-default(data-ng-repeat="post in vm.arr track by $index")
+            div.panel-heading
+                h4  List of posts
+            div.panel-body
+                h2 {{post.title}}
+                p  {{post.text}}
